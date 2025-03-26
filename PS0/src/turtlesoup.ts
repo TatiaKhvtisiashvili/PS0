@@ -125,40 +125,38 @@ export function findPath(turtle: Turtle, points: Point[]): string[] {
  * @param turtle The turtle to use.
  */
 export function drawPersonalArt(turtle: Turtle): void {
-  // TODO: Implement drawPersonalArt
-  // Example - replace with your own art!
-  turtle.color("black");
-turtle.forward(100);
-turtle.turn(110);
-turtle.color("blue");
-turtle.forward(90);
-turtle.turn(45);
-turtle.color("orange");
-turtle.forward(25);
-turtle.turn(30);
-turtle.color("green");
-turtle.forward(110);
-turtle.turn(270);
-turtle.color("green");
-turtle.forward(40);
-turtle.turn(120);
-turtle.color("cyan");
-turtle.forward(130);
-turtle.turn(50);
-turtle.forward(110);
-turtle.turn(60);
-turtle.forward(80);
-turtle.turn(25);
-turtle.color("black");
-turtle.forward(120);
-turtle.turn(80);
-turtle.color("blue");
-turtle.forward(180);
-turtle.turn(100);
-turtle.color("orange");
-turtle.turn(70);
-turtle.forward(190);
 
+  function drawSpiral(steps: number, angle: number, increment: number) {
+    for (let i = 0; i < steps; i++) {
+      turtle.color("blue"); // Pick color cyclically
+      turtle.forward(i * increment);
+      turtle.turn(angle);
+    }
+  }
+
+  function drawStar(size: number) {
+    turtle.color("yellow");
+    for (let i = 0; i < 5; i++) {
+      turtle.forward(size);
+      turtle.turn(144);
+    }
+  }
+
+  // Start the art
+  drawSpiral(15, 36, 5); // Creates a spiral
+  turtle.turn(90);
+  drawStar(80); // Draws a star
+  turtle.turn(-45);
+  drawSpiral(10, 40, 8); // Another spiral
+
+  // Additional movements to create complexity
+  turtle.color("purple");
+  turtle.forward(100);
+  turtle.turn(60);
+  turtle.color("cyan");
+  turtle.forward(80);
+  turtle.turn(120);
+  turtle.forward(80);
 }
 
 function generateHTML(
